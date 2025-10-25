@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>TODO APP</title>
+</head>
+<body>
+    <header class="app-header">
+        <h1>🗓️ My Weekly Planner</h1>
+        <button id="clearDataBtn">Clear All</button>
+        <button id="themeToggle">🌙 </button>
+    </header>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2>My Catagories</h2>
+            <ul>
+                <li>Workout</li>
+                <li>Work</li>
+                <li>Study</li>
+                <li>Personal</li>
+                <li>All</li>
+            </ul>
+        </aside>
+        <main class="main-section">
+            <div class="tracker">
+                <h3>Weekly Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress">
+
+                    </div>
+                </div>
+            </div>
+            <div class="habits">
+                <h3>Weekly Habits</h3>
+                <div class="habit-list" id="habitList"></div>
+            </div>
+            <div class="tasks">
+                <h3>Tasks</h3>
+                <form  id="taskForm">
+                    <input type="text" id="taskInput" placeholder="Add a new task..." required>
+                    <select  id="taskCategory">
+                        <option value="Workout">Workout</option>
+                        <option value="Work">Work</option>
+                        <option value="Study">Study</option>
+                        <option value="Personal">Personal</option>
+                    </select>
+                    <button type="submit">Add</button>
+                </form>
+                <div class="task-list" id="taskList">
+
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
