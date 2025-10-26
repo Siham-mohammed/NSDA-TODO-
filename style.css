@@ -189,3 +189,74 @@ body.dark #themeToggle{
     background: #5c5e7b;
 }
 
+/* ✅ Mobile & Tablet Responsive Design */
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr; /* stack sidebar above main */
+    height: auto;
+  }
+
+  .sidebar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .sidebar h2 {
+    display: none; /* hide heading for compact view */
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .sidebar li {
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: #3c406d;
+    transition: background 0.3s ease;
+  }
+
+  .sidebar li:hover {
+    background: #5c5e7b;
+  }
+
+  .main-section {
+    padding: 20px;
+  }
+
+  #taskForm {
+    flex-direction: column;
+  }
+
+  #taskForm input,
+  #taskForm select,
+  #taskForm button {
+    width: 100%;
+  }
+
+  .task-item,
+  .habit-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .app-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .app-header button {
+    width: 100%;
+  }
+}
+
+
