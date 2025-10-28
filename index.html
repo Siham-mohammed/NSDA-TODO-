@@ -34,6 +34,14 @@
             </div>
             <div class="habits">
                 <h3>Weekly Habits</h3>
+                <form id="habitForm">
+  <input type="text" id="habitName" placeholder="Habit name..." required>
+  <input type="number" id="habitTarget" placeholder="Target per week" min="1" required>
+  <button type="submit">Add Habit</button>
+</form>
+
+<div id="habitList"></div>
+
                 <div class="habit-list" id="habitList"></div>
             </div>
             <div class="tasks">

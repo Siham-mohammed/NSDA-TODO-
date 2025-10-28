@@ -73,26 +73,43 @@ function updateProgress() {
 
 const habitList = document.getElementById("habitList");
 
-let habits = JSON.parse(localStorage.getItem("habits")) || [
-  { name: "Go to Gym", target: 3, progress: 0 },
-  { name: "Study", target: 5, progress: 0 },
-  { name: "Read Book", target: 4, progress: 0 },
-];
-
+let habits = JSON.parse(localStorage.getItem("habits"))||[];
 function renderHabits() {
   habitList.innerHTML = "";
+
+  if (habits.length === 0) {
+    habitList.innerHTML = "<p>No habits yet. Add one above!</p>";
+    return;
+  }
+
   habits.forEach((habit, index) => {
     const div = document.createElement("div");
     div.classList.add("habit-item");
-    let content = `<span>${habit.name}: ${habit.progress}/${habit.target}</span>`;
+
+   
+    if (habit.progress >= habit.target) {
+      div.classList.add("completed");
+    }
+
+    let content = `
+      <span>${habit.name}: ${habit.progress}/${habit.target}</span>
+      <div class="actions">
+    `;
+
     
     if (habit.progress < habit.target) {
-      content += `<button onclick="updateHabit(${index})">+1</button>`;
+      content += `<button class="increment-btn" onclick="updateHabit(${index})">+1</button>`;
     }
+
+   
+    content += `<button class="delete-habit-btn" onclick="deleteHabit(${index})">🗑️</button>
+      </div>`;
+
     div.innerHTML = content;
     habitList.appendChild(div);
   });
 }
+
 function updateHabit(index) {
   if (habits[index].progress < habits[index].target) {
     habits[index].progress++;
@@ -100,6 +117,13 @@ function updateHabit(index) {
   localStorage.setItem("habits", JSON.stringify(habits));
   renderHabits();
 }
+
+function deleteHabit(index) {
+  habits.splice(index, 1);
+  localStorage.setItem("habits", JSON.stringify(habits));
+  renderHabits();
+}
+
 
 function resetHabitsIfNewWeek() {
   const lastReset = localStorage.getItem("lastReset");
@@ -112,6 +136,23 @@ function resetHabitsIfNewWeek() {
     localStorage.setItem("lastReset", String(currentWeek));
   }
 }
+const habitForm = document.getElementById("habitForm");
+const habitNameInput = document.getElementById("habitName");
+const habitTargetInput = document.getElementById("habitTarget");
+
+habitForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = habitNameInput.value.trim();
+  const target = parseInt(habitTargetInput.value.trim());
+
+  if (name && target > 0) {
+    habits.push({ name, target, progress: 0 });
+    localStorage.setItem("habits", JSON.stringify(habits));
+    renderHabits();
+    habitForm.reset(); 
+  }
+});
 
 function getWeekNumber(date) {
   const firstDay = new Date(date.getFullYear(), 0, 1);
