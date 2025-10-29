@@ -189,75 +189,6 @@ body.dark #themeToggle{
     background: #5c5e7b;
 }
 
-/* ✅ Mobile & Tablet Responsive Design */
-@media (max-width: 900px) {
-  .dashboard {
-    grid-template-columns: 1fr; /* stack sidebar above main */
-    height: auto;
-  }
-
-  .sidebar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 10px;
-    text-align: center;
-  }
-
-  .sidebar h2 {
-    display: none; /* hide heading for compact view */
-  }
-
-  .sidebar ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .sidebar li {
-    padding: 6px 12px;
-    border-radius: 6px;
-    background: #3c406d;
-    transition: background 0.3s ease;
-  }
-
-  .sidebar li:hover {
-    background: #5c5e7b;
-  }
-
-  .main-section {
-    padding: 20px;
-  }
-
-  #taskForm {
-    flex-direction: column;
-  }
-
-  #taskForm input,
-  #taskForm select,
-  #taskForm button {
-    width: 100%;
-  }
-
-  .task-item,
-  .habit-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .app-header {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .app-header button {
-    width: 100%;
-  }
-}
 
 
 #habitForm {
@@ -316,4 +247,118 @@ body.dark #themeToggle{
   background-color: #ff4c5b;
 }
 
+
+
+
+@media (max-width: 1000px) {
+  
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: auto;
+  }
+
+ 
+  .sidebar {
+    background: #3c406d;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-bottom: 3px solid #2b2d42;
+  }
+
+  .sidebar h2 {
+    display: none; 
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .sidebar li {
+    background: #2b2d42;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .sidebar li:hover {
+    background: #5c5e7b;
+    transform: translateY(-2px);
+  }
+
+  .sidebar li.active {
+    background: #4a90e2;
+    color: white;
+  }
+
+  .main-section {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #taskForm,
+  #habitForm {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #taskForm input,
+  #taskForm select,
+  #taskForm button,
+  #habitForm input,
+  #habitForm button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+ 
+  .task-item,
+  .habit-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+ 
+  .task-item .actions,
+  .habit-item .actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .app-header button {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  
+  .progress-bar {
+    height: 12px;
+  }
+}
 
